@@ -1,8 +1,10 @@
 package calculator;
 
+
 import java.awt.GridLayout;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
 import javax.swing.JPanel;
@@ -43,31 +45,35 @@ public class GUI
     private JButton button9;
     
     private double arg1, arg2;
-    private double result;
+    private double doubleResult;
     private String desiredOperation;
     private boolean defaultState;
-    private int operationClickNumber;
+    
     
    /**
     * Creates a fully functional calculator object and displays the GUI
     */
-   public void display() 
+   public GUI() 
    {
         // Create the main frame and the main panel
         JFrame frame = new JFrame();
         JPanel mainPanel = new JPanel(new BorderLayout());
+        Font boldFont = new Font("Menlo", Font.BOLD, 18);
         
         // Create a display area for calculations
         final int ROWS = 2;
         final int COLUMS = 10;
         textArea = new JTextArea(ROWS, COLUMS);
         textArea.setEditable(false);
-        setDisplayArea("0");
+        textArea.setBackground(Color.BLACK);
+        textArea.setForeground(Color.WHITE);
+        textArea.setFont(boldFont);
         isDefaultState(true);
         
         // Create top panel for the text area 
-        JPanel topPanel = new JPanel();
-        topPanel.add(textArea);
+        JPanel topPanel = new JPanel(new BorderLayout());
+        topPanel.setBackground(Color.BLACK);
+        topPanel.add(textArea, BorderLayout.EAST);
         
         // Create the calculator buttons
         allClearButton = new JButton("AC");
@@ -92,30 +98,100 @@ public class GUI
         button9 = new JButton("9");
         
         // Format of the buttons
-        allClearButton.setBackground(Color.ORANGE);
+        allClearButton.setBackground(Color.LIGHT_GRAY);
+        allClearButton.setFont(boldFont);
         allClearButton.setOpaque(true);
         allClearButton.setBorderPainted(false);
-        plusMinusButton.setBackground(Color.ORANGE);
+        plusMinusButton.setBackground(Color.LIGHT_GRAY);
+        plusMinusButton.setFont(boldFont);
         plusMinusButton.setOpaque(true);
         plusMinusButton.setBorderPainted(false);
-        percentButton.setBackground(Color.ORANGE);
+        percentButton.setBackground(Color.LIGHT_GRAY);
+        percentButton.setFont(boldFont);
         percentButton.setOpaque(true);
         percentButton.setBorderPainted(false);
-        divisionButton.setBackground(Color.ORANGE);
+        divisionButton.setBackground(new Color(244, 167, 66));
+        divisionButton.setForeground(Color.WHITE);
+        divisionButton.setFont(boldFont);
         divisionButton.setOpaque(true);
         divisionButton.setBorderPainted(false);
-        multiplicationButton.setBackground(Color.ORANGE);
+        multiplicationButton.setBackground(new Color(244, 167, 66));
+        multiplicationButton.setForeground(Color.WHITE);
+        multiplicationButton.setFont(boldFont);
         multiplicationButton.setOpaque(true);
         multiplicationButton.setBorderPainted(false);
-        subtractionButton.setBackground(Color.ORANGE);
+        subtractionButton.setBackground(new Color(244, 167, 66));
+        subtractionButton.setForeground(Color.WHITE);
+        subtractionButton.setFont(boldFont);
         subtractionButton.setOpaque(true);
         subtractionButton.setBorderPainted(false);
-        additionButton.setBackground(Color.ORANGE);
+        additionButton.setBackground(new Color(244, 167, 66));
+        additionButton.setForeground(Color.WHITE);
+        additionButton.setFont(boldFont);
         additionButton.setOpaque(true);
         additionButton.setBorderPainted(false);
-        equalsButton.setBackground(Color.ORANGE);
+        equalsButton.setBackground(new Color(244, 167, 66));
+        equalsButton.setForeground(Color.WHITE);
+        equalsButton.setFont(boldFont);
         equalsButton.setOpaque(true);
         equalsButton.setBorderPainted(false);
+        
+        
+        button0.setBackground(Color.DARK_GRAY);
+        button0.setForeground(Color.WHITE);
+        button0.setFont(boldFont);
+        button0.setOpaque(true);
+        button0.setBorderPainted(false);
+        button1.setBackground(Color.DARK_GRAY);
+        button1.setForeground(Color.WHITE);
+        button1.setFont(boldFont);
+        button1.setOpaque(true);
+        button1.setBorderPainted(false);
+        button2.setBackground(Color.DARK_GRAY);
+        button2.setForeground(Color.WHITE);
+        button2.setFont(boldFont);
+        button2.setOpaque(true);
+        button2.setBorderPainted(false);
+        button3.setBackground(Color.DARK_GRAY);
+        button3.setForeground(Color.WHITE);
+        button3.setFont(boldFont);
+        button3.setOpaque(true);
+        button3.setBorderPainted(false);
+        button4.setBackground(Color.DARK_GRAY);
+        button4.setForeground(Color.WHITE);
+        button4.setFont(boldFont);
+        button4.setOpaque(true);
+        button4.setBorderPainted(false);
+        button5.setBackground(Color.DARK_GRAY);
+        button5.setForeground(Color.WHITE);
+        button5.setFont(boldFont);
+        button5.setOpaque(true);
+        button5.setBorderPainted(false);
+        button6.setBackground(Color.DARK_GRAY);
+        button6.setForeground(Color.WHITE);
+        button6.setFont(boldFont);
+        button6.setOpaque(true);
+        button6.setBorderPainted(false);
+        button7.setBackground(Color.DARK_GRAY);
+        button7.setForeground(Color.WHITE);
+        button7.setFont(boldFont);
+        button7.setOpaque(true);
+        button7.setBorderPainted(false);
+        button8.setBackground(Color.DARK_GRAY);
+        button8.setForeground(Color.WHITE);
+        button8.setFont(boldFont);
+        button8.setOpaque(true);
+        button8.setBorderPainted(false);
+        button9.setBackground(Color.DARK_GRAY);
+        button9.setForeground(Color.WHITE);
+        button9.setFont(boldFont);
+        button9.setOpaque(true);
+        button9.setBorderPainted(false);
+        decimalButton.setBackground(Color.DARK_GRAY);
+        decimalButton.setForeground(Color.WHITE);
+        decimalButton.setFont(boldFont);
+        decimalButton.setOpaque(true);
+        decimalButton.setBorderPainted(false);
         
         // Add the event listeners to each button
         ActionListener buttonClick = new ButtonListener();
@@ -141,7 +217,8 @@ public class GUI
         equalsButton.addActionListener(buttonClick);
         
         
-        JPanel buttonPanel = new JPanel(new GridLayout(5,4));
+        JPanel buttonPanel = new JPanel(new GridLayout(5, 4, 4, 4));
+        buttonPanel.setBackground(Color.BLACK);
         buttonPanel.add(allClearButton);
         buttonPanel.add(plusMinusButton);
         buttonPanel.add(percentButton);
@@ -174,7 +251,7 @@ public class GUI
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-   } // end of display method
+   } // end of constructor
    
    
    class ButtonListener implements ActionListener 
@@ -287,22 +364,21 @@ public class GUI
                textArea.setText("0");
                setArg1(0);
                setArg2(0);
-               setOperationClickNumber(0);
            }
            if (e.getSource().equals(plusMinusButton))
            {
                // makes a positive number negative and a negative number positive
                setArg1(convertTextToDouble());
                
-               result = Operations.flipSigns(arg1);
-               setDisplayArea("" + result);   
+               doubleResult = Operations.flipSigns(arg1);
+               setDisplayArea("" + doubleResult);   
            }
            if (e.getSource().equals(percentButton))
            {
                // Calls the asPercent() method on the argument
                setArg1(convertTextToDouble());
-               result = Operations.asPercent(arg1);
-               setDisplayArea("" + result);
+               doubleResult = Operations.asPercent(arg1);
+               setDisplayArea("" + doubleResult);
            }
            if (e.getSource().equals(divisionButton))
            {
@@ -338,29 +414,122 @@ public class GUI
            }
            if (e.getSource().equals(equalsButton))
            {
-               setArg2(convertTextToDouble());
-               
-               switch (desiredOperation)
+               if (defaultState)
                {
-                   case "Addition":
-                       result = Operations.addition(arg1, arg2);
-                       setDisplayArea("" + result);
-                       break;
-                   case "Subtraction":
-                       result = Operations.subtraction(arg1, arg2);
-                       setDisplayArea("" + result);
-                       break;
-                   case "Multiplication":
-                       result = Operations.multiplication(arg1, arg2);
-                       setDisplayArea("" + result);
-                       break;
-                   case "Division":
-                       result = Operations.division(arg1, arg2);
-                       setDisplayArea("" + result);
-                       break;
-                   default:
-                       System.exit(-1);   
-               }
+                    setArg1(doubleResult);
+
+                    switch (desiredOperation)
+                    {
+                        case "Addition":
+                            doubleResult = Operations.addition(arg1, arg2);
+                            if (doubleResult == Math.floor(doubleResult))
+                            {
+                                setDisplayArea("" + (int) doubleResult);   
+                            }
+                            else
+                            {
+                                setDisplayArea("" + doubleResult);
+                            }
+                            break;
+                        case "Subtraction":
+                            doubleResult = Operations.subtraction(arg1, arg2);
+                            if (doubleResult == Math.floor(doubleResult))
+                            {
+                                setDisplayArea("" + (int) doubleResult);   
+                            }
+                            else
+                            {
+                                setDisplayArea("" + doubleResult);
+                            }
+                            break;
+                        case "Multiplication":
+                            doubleResult = Operations.multiplication(arg1, arg2);
+                            if (doubleResult == Math.floor(doubleResult))
+                            {
+                                setDisplayArea("" + (int) doubleResult);   
+                            }
+                            else
+                            {
+                                setDisplayArea("" + doubleResult);
+                            }
+                            break;
+                        case "Division":
+                            doubleResult = Operations.division(arg1, arg2);
+                            if (doubleResult == Math.floor(doubleResult))
+                            {
+                                setDisplayArea("" + (int) doubleResult);   
+                            }
+                            else
+                            {
+                                setDisplayArea("" + doubleResult);
+                            }
+                            break;
+                        default:
+                            System.exit(-1);
+                    }
+                }
+                else 
+                {
+                    setArg2(convertTextToDouble());
+
+                    switch (desiredOperation)
+                    {
+                        case "Addition":
+                            doubleResult = Operations.addition(arg1, arg2);
+                            if (doubleResult == Math.floor(doubleResult))
+                            {
+                                setDisplayArea("" + (int) doubleResult);
+                                isDefaultState(true);
+                            }
+                            else
+                            {
+                                setDisplayArea("" + doubleResult);
+                                isDefaultState(true);
+                            }
+                            break;
+                        case "Subtraction":
+                            doubleResult = Operations.subtraction(arg1, arg2);
+                            if (doubleResult == Math.floor(doubleResult))
+                            {
+                                setDisplayArea("" + (int) doubleResult);
+                                isDefaultState(true);
+                            }
+                            else
+                            {
+                                setDisplayArea("" + doubleResult);
+                                isDefaultState(true);
+                            }
+                            break;
+                        case "Multiplication":
+                            doubleResult = Operations.multiplication(arg1, arg2);
+                            if (doubleResult == Math.floor(doubleResult))
+                            {
+                                setDisplayArea("" + (int) doubleResult);
+                                isDefaultState(true);
+                            }
+                            else
+                            {
+                                setDisplayArea("" + doubleResult);
+                                isDefaultState(true);
+                            }
+                            break;
+                        case "Division":
+                            doubleResult = Operations.division(arg1, arg2);
+                            if (doubleResult == Math.floor(doubleResult))
+                            {
+                                setDisplayArea("" + (int) doubleResult);
+                                isDefaultState(true);
+                            }
+                            else
+                            {
+                                setDisplayArea("" + doubleResult);
+                                isDefaultState(true);
+                            }
+                            break;
+                        default:
+                            System.exit(-1);        
+                    } 
+                }
            }      
         }       
     } // end of buttonListener inner class
@@ -376,7 +545,7 @@ public class GUI
    }
    
    /**
-    * Reads the display area and converts the string to double for operations
+    * Reads the display area and converts the string input to double for operations
     * @return 
     */
    public double convertTextToDouble() 
@@ -438,14 +607,5 @@ public class GUI
        defaultState = state;
    }
    
-   public void incrementOperationClickNumber() 
-   {
-       operationClickNumber += 1;
-   }
-   
-   public void setOperationClickNumber(int clickNumber) 
-   {
-       operationClickNumber = clickNumber;
-   }
-  
+ 
 } // end of class
