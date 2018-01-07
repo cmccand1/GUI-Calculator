@@ -7,43 +7,33 @@ package calculator;
  */
 public class Operations {
     
-    public static int addition(int x, int y) 
-    {
-        int result = x + y;
-        return result;
-    }
     
     public static double addition(double x, double y) 
     {
-        double result = x + y;
-        return result;
+        double doubleResult = x + y;
+        return doubleResult;
     }
     
-    public static int subtraction(int x, int y) 
-    {
-        int result = x - y;
-        return result;
-    }
     
     public static double subtraction(double x, double y) 
     {
-        double result = x - y;
-        return result;
+        double doubleResult = x - y;
+        return doubleResult;
     }
     
     public static double multiplication(double x, double y) 
     {
-        double result = x * y;
-        return result;
+        double doubleResult = x * y;
+        return doubleResult;
     }
     
     public static double division(double x, double y) 
     {
-        double result;
+        double doubleResult;
         if (y != 0)
         {
-            result = x / y;
-            return result;
+            doubleResult = x / y;
+            return doubleResult;
         }
         else
             return -1;
@@ -52,8 +42,8 @@ public class Operations {
     
     public static double asPercent(double x) 
     {
-        double result = x / 100;
-        return result;
+        double doubleResult = x / 100;
+        return doubleResult;
         
     }
     
