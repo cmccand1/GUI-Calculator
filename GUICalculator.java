@@ -37,7 +37,7 @@ public class GUICalculator extends JPanel
     private boolean defaultState;
     
     // [0] = gridx, [1] = gridy, [2] = gridwidth, [3] = gridheight
-    private int [][] numConstraints = new int[][] {
+    private int [][] numberButtonConstraints = new int[][] {
         {0, 5, 2, 1}, // 0
         {0, 4, 1, 1}, // 1
         {1, 4, 1, 1}, // 2
@@ -51,7 +51,7 @@ public class GUICalculator extends JPanel
     };
     
     // [0] = gridx, [1] = gridy, [2] = gridwidth, [3] = gridheight
-    private int[][] opConstraints = new int[][] {
+    private int[][] opButtonConstraints = new int[][] {
         {2, 5, 1, 1}, // decimal
         {3, 5, 1, 1}, // equals
         {3, 4, 1, 1}, // plus
@@ -84,10 +84,10 @@ public class GUICalculator extends JPanel
         {
             numberButtons[i] = new JButton("" + i);
             
-            gbc.gridx = numConstraints[i][0];
-            gbc.gridy = numConstraints[i][1];
-            gbc.gridwidth = numConstraints[i][2];
-            gbc.gridheight = numConstraints[i][3];
+            gbc.gridx = numberButtonConstraints[i][0];
+            gbc.gridy = numberButtonConstraints[i][1];
+            gbc.gridwidth = numberButtonConstraints[i][2];
+            gbc.gridheight = numberButtonConstraints[i][3];
             gbc.weightx = 1;
             gbc.weighty = 1;
             gbc.fill = GridBagConstraints.BOTH;
@@ -113,10 +113,10 @@ public class GUICalculator extends JPanel
         { 
            opButtons[i] = new JButton("" + opLabels[i]); 
             
-           gbc.gridx = opConstraints[i][0];
-           gbc.gridy = opConstraints[i][1];
-           gbc.gridwidth = opConstraints[i][2];
-           gbc.gridheight = opConstraints[i][3];
+           gbc.gridx = opButtonConstraints[i][0];
+           gbc.gridy = opButtonConstraints[i][1];
+           gbc.gridwidth = opButtonConstraints[i][2];
+           gbc.gridheight = opButtonConstraints[i][3];
            gbc.weightx = 1;
            gbc.weighty = 1;
            gbc.fill = GridBagConstraints.BOTH;
@@ -516,4 +516,3 @@ public class GUICalculator extends JPanel
    }
     
 }
-
