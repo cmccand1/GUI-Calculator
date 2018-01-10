@@ -117,6 +117,8 @@ public class GUICalculator extends JPanel
            gbc.gridy = opConstraints[i][1];
            gbc.gridwidth = opConstraints[i][2];
            gbc.gridheight = opConstraints[i][3];
+           gbc.weightx = 1;
+           gbc.weighty = 1;
            gbc.fill = GridBagConstraints.BOTH;
            gbc.insets = new Insets(2, 2, 2, 2);
            
