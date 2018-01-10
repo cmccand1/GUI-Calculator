@@ -88,6 +88,8 @@ public class GUICalculator extends JPanel
             gbc.gridy = numConstraints[i][1];
             gbc.gridwidth = numConstraints[i][2];
             gbc.gridheight = numConstraints[i][3];
+            gbc.weightx = 1;
+            gbc.weighty = 1;
             gbc.fill = GridBagConstraints.BOTH;
             gbc.insets = new Insets(2, 2, 2, 2);
             
@@ -179,7 +181,7 @@ public class GUICalculator extends JPanel
    {
        public void actionPerformed(ActionEvent e) 
        {
-           if (e.getSource() == numberButtons[0] )
+           if (e.getSource() == numberButtons[0] ) 
            {
                if (defaultState) 
                {
@@ -512,3 +514,4 @@ public class GUICalculator extends JPanel
    }
     
 }
+
