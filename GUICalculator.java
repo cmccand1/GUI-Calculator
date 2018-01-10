@@ -106,13 +106,11 @@ public class GUICalculator extends JPanel
         // Create and format the op buttons
         String[] opLabels = { ".", "=", "+", "-", "x", "÷", "%", "+/-", "AC" };
         opButtons = new JButton[9];
-        for (int i = 0; i < opButtons.length; i++)
-        {
-            opButtons[i] = new JButton("" + opLabels[i]);
-        }
         
         for (int i = 0; i < opButtons.length; i++)
         { 
+           opButtons[i] = new JButton("" + opLabels[i]); 
+            
            gbc.gridx = opConstraints[i][0];
            gbc.gridy = opConstraints[i][1];
            gbc.gridwidth = opConstraints[i][2];
@@ -121,32 +119,30 @@ public class GUICalculator extends JPanel
            gbc.insets = new Insets(2, 2, 2, 2);
            
            add(opButtons[i], gbc);
-           
-
-            for (int j = 1; j < 6; j++)
-            {
-               opButtons[j].setBackground(new Color(244, 167, 66));
-               opButtons[j].setForeground(Color.WHITE);
-               opButtons[j].setFont(boldFont);
-               opButtons[j].setOpaque(true);
-               opButtons[j].setBorderPainted(false);  
-            }
             
-            opButtons[i].setBackground(Color.DARK_GRAY);
-            opButtons[i].setForeground(Color.WHITE);
+        }
+        
+           opButtons[0].setBackground(Color.DARK_GRAY);
+           opButtons[0].setForeground(Color.WHITE);
+           opButtons[0].setFont(boldFont);
+           opButtons[0].setOpaque(true);
+           opButtons[0].setBorderPainted(false);
+        
+        for (int i = 1; i < 6; i++)
+        {
+           opButtons[i].setBackground(new Color(244, 167, 66));
+           opButtons[i].setForeground(Color.WHITE);
+           opButtons[i].setFont(boldFont);
+           opButtons[i].setOpaque(true);
+           opButtons[i].setBorderPainted(false);  
+        }   
+            
+        for (int i = 6; i < opButtons.length; i++)
+        {
+            opButtons[i].setBackground(Color.LIGHT_GRAY);
             opButtons[i].setFont(boldFont);
             opButtons[i].setOpaque(true);
             opButtons[i].setBorderPainted(false);
-            
-            
-            for (int k = 6; k < opButtons.length; k++)
-            {
-                opButtons[k].setBackground(Color.LIGHT_GRAY);
-                opButtons[k].setFont(boldFont);
-                opButtons[k].setOpaque(true);
-                opButtons[k].setBorderPainted(false);
-            }
-            
         }
         
         // Create and format the text area
