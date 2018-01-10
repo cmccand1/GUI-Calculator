@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gui.calculator;
 
 import java.awt.Color;
@@ -109,19 +104,15 @@ public class GUICalculator extends JPanel
         
         
         // Create and format the op buttons
+        String[] opLabels = { ".", "=", "+", "-", "x", "÷", "%", "+/-", "AC" };
         opButtons = new JButton[9];
-        opButtons[0] = new JButton(".");
-        opButtons[1] = new JButton("=");
-        opButtons[2] = new JButton("+");
-        opButtons[3] = new JButton("-");
-        opButtons[4] = new JButton("x");
-        opButtons[5] = new JButton("÷");
-        opButtons[6] = new JButton("%");
-        opButtons[7] = new JButton("+/-");
-        opButtons[8] = new JButton("AC");
-        
         for (int i = 0; i < opButtons.length; i++)
         {
+            opButtons[i] = new JButton("" + opLabels[i]);
+        }
+        
+        for (int i = 0; i < opButtons.length; i++)
+        { 
            gbc.gridx = opConstraints[i][0];
            gbc.gridy = opConstraints[i][1];
            gbc.gridwidth = opConstraints[i][2];
