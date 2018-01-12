@@ -164,6 +164,8 @@ public class GUICalculator extends JPanel
         textArea.setBackground(Color.BLACK);
         textArea.setForeground(Color.WHITE);
         textArea.setFont(boldFont);
+        textArea.setText("0");
+        defaultState = true;
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.gridwidth = 4;
@@ -309,7 +311,14 @@ public class GUICalculator extends JPanel
                arg1 = Double.parseDouble(textArea.getText());
                
                doubleResult = Operations.flipSigns(arg1);
-               textArea.setText("" + doubleResult);   
+               if (doubleResult == Math.floor(doubleResult))
+               {
+                   textArea.setText("" + (int) doubleResult);
+               }
+               else
+               {
+                   textArea.setText("" + doubleResult);
+               }
            }
            if (e.getSource() == opButtons[6])
            {
