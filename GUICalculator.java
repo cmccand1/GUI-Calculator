@@ -73,12 +73,15 @@ public class GUICalculator extends JPanel
         layout.rowHeights = new int[] {80, 80, 80, 80, 80, 80};
         setLayout(layout);
         boldFont = new Font("Menlo", Font.BOLD, 18);
+        setBackground(Color.BLACK);
         
         gbc = new GridBagConstraints();
         
         
         
-        // Create and format the number buttons
+        /**
+         * Create and format the number buttons
+         */
         numberButtons = new JButton[10];
         for (int i = 0; i < numberButtons.length; i++)
         {
@@ -105,7 +108,9 @@ public class GUICalculator extends JPanel
         
         
         
-        // Create and format the op buttons
+        /**
+         *  Create and format the op buttons
+         */
         String[] opLabels = { ".", "=", "+", "-", "x", "÷", "%", "+/-", "AC" };
         opButtons = new JButton[9];
         
@@ -149,7 +154,11 @@ public class GUICalculator extends JPanel
             opButtons[i].setBorderPainted(false);
         }
         
-        // Create and format the text area
+        
+        
+        /**
+         *  Create and format the text area
+         */
         textArea = new JTextArea();
         textArea.setEditable(false);
         textArea.setBackground(Color.BLACK);
@@ -163,7 +172,10 @@ public class GUICalculator extends JPanel
         add(textArea, gbc);
         
         
-        // Create an action listener and add it to each of the buttons
+        
+        /**
+         * Create an action listener and add it to each of the buttons
+         */
         ActionListener buttonClick = new ButtonListener();
         for (int i = 0; i < numberButtons.length; i++)
         {
@@ -173,167 +185,168 @@ public class GUICalculator extends JPanel
         {
             opButtons[i].addActionListener(buttonClick);
         }
-        
-        
+           
     } // end of constructor
     
     
     
+    /**
+     * Specify functionality of the buttons
+     */
     class ButtonListener implements ActionListener 
    {
        public void actionPerformed(ActionEvent e) 
        {
-           if (e.getSource() == numberButtons[0] ) 
+           if (e.getSource() == numberButtons[0]) 
            {
                if (defaultState) 
                {
                   textArea.setText("0");
-                  isDefaultState(false);
+                  defaultState = false;
                }
                else
                   textArea.append("0");   
            }
-           if (e.getSource() == numberButtons[1] )
+           if (e.getSource() == numberButtons[1])
            {
               if (defaultState) 
                {
                   textArea.setText("1");
-                  isDefaultState(false);
+                  defaultState = false;
                }
                else
                   textArea.append("1");  
            }
-           if (e.getSource() == numberButtons[2] )
+           if (e.getSource() == numberButtons[2])
            {
               if (defaultState) 
                {
                   textArea.setText("2");
-                  isDefaultState(false);
+                  defaultState = false;
                }
                else
                   textArea.append("2");  
            }
-           if (e.getSource() == numberButtons[3] )
+           if (e.getSource() == numberButtons[3])
            {
               if (defaultState) 
                {
                   textArea.setText("3");
-                  isDefaultState(false);
+                  defaultState = false;
                }
                else
                   textArea.append("3");  
            }
-           if (e.getSource() == numberButtons[4] )
+           if (e.getSource() == numberButtons[4])
            {
               if (defaultState) 
                {
                   textArea.setText("4");
-                  isDefaultState(false);
+                  defaultState = false;
                }
                else
                   textArea.append("4");  
            }
-           if (e.getSource() == numberButtons[5] )
+           if (e.getSource() == numberButtons[5])
            {
               if (defaultState) 
                {
                   textArea.setText("5");
-                  isDefaultState(false);
+                  defaultState = false;
                }
                else
                   textArea.append("5");  
            }
-           if (e.getSource() == numberButtons[6] )
+           if (e.getSource() == numberButtons[6])
            {
               if (defaultState) 
                {
                   textArea.setText("6");
-                  isDefaultState(false);
+                  defaultState = false;
                }
                else
                   textArea.append("6");  
            }
-           if (e.getSource() == numberButtons[7] )
+           if (e.getSource() == numberButtons[7])
            {
               if (defaultState) 
                {
                   textArea.setText("7");
-                  isDefaultState(false);
+                  defaultState = false;
                }
                else
                   textArea.append("7");  
            }
-           if (e.getSource() == numberButtons[8] )
+           if (e.getSource() == numberButtons[8])
            {
               if (defaultState) 
                {
                   textArea.setText("8");
-                  isDefaultState(false);
+                  defaultState = false;
                }
                else
                   textArea.append("8");  
            }
-           if (e.getSource() == numberButtons[9] )
+           if (e.getSource() == numberButtons[9])
            {
               if (defaultState) 
                {
                   textArea.setText("9");
-                  isDefaultState(false);
+                  defaultState = false;
                }
                else
                   textArea.append("9");  
            }
            if (e.getSource() == opButtons[8])
            {
-               isDefaultState(true);
+               defaultState = true;
                textArea.setText("0");
-               setArg1(0);
-               setArg2(0);
+               arg1 = 0;
+               arg1 = 0;
            }
            if (e.getSource() == opButtons[7])
            {
-               // makes a positive number negative and a negative number positive
-               setArg1(convertTextToDouble());
+               arg1 = Double.parseDouble(textArea.getText());
                
                doubleResult = Operations.flipSigns(arg1);
-               setDisplayArea("" + doubleResult);   
+               textArea.setText("" + doubleResult);   
            }
            if (e.getSource() == opButtons[6])
            {
-               // Calls the asPercent() method on the argument
-               setArg1(convertTextToDouble());
+               arg1 = Double.parseDouble(textArea.getText());
+               
                doubleResult = Operations.asPercent(arg1);
-               setDisplayArea("" + doubleResult);
+               textArea.setText("" + doubleResult);
            }
            if (e.getSource() == opButtons[5])
            {
-               // Calls the division() method on the arguments
-               setArg1(convertTextToDouble());
-               isDefaultState(true);
-               setDesiredOperation("Division"); 
+               arg1 = Double.parseDouble(textArea.getText());
+               
+               defaultState = true; 
+               desiredOperation = "Division";
            }
            if (e.getSource() == opButtons[4])
            {
-               // Calls the multiplication() method on the arguments
-               setArg1(convertTextToDouble());
-               isDefaultState(true);
-               setDesiredOperation("Multiplication"); 
+               arg1 = Double.parseDouble(textArea.getText());
+               
+               defaultState = true; 
+               desiredOperation = "Multiplication"; 
            }
            if (e.getSource() == opButtons[2])
            {
-               // Calls the addition() method on the arguments
-               setArg1(convertTextToDouble());
-               isDefaultState(true);
-               setDesiredOperation("Addition");
+               arg1 = Double.parseDouble(textArea.getText());
+               
+               defaultState = true; 
+               desiredOperation = "Addition";
            }
            if (e.getSource() == opButtons[3])
            {
-               // Calls the subtraction() method on the arguments
-               setArg1(convertTextToDouble());
-               isDefaultState(true);
-               setDesiredOperation("Subtraction"); 
+               arg1 = Double.parseDouble(textArea.getText());
+               
+               defaultState = true; 
+               desiredOperation = "Subtraction"; 
            }
-           if (e.getSource() == opButtons[0])
+           if (e.getSource() == opButtons[0]) // decimal button
            {
                textArea.append(".");
            }
@@ -341,7 +354,7 @@ public class GUICalculator extends JPanel
            {
                if (defaultState)
                {
-                    setArg1(doubleResult);
+                    arg1 = doubleResult;
 
                     switch (desiredOperation)
                     {
@@ -349,44 +362,44 @@ public class GUICalculator extends JPanel
                             doubleResult = Operations.addition(arg1, arg2);
                             if (doubleResult == Math.floor(doubleResult))
                             {
-                                setDisplayArea("" + (int) doubleResult);   
+                                textArea.setText("" + (int) doubleResult);
                             }
                             else
                             {
-                                setDisplayArea("" + doubleResult);
+                                textArea.setText("" + doubleResult);
                             }
                             break;
                         case "Subtraction":
                             doubleResult = Operations.subtraction(arg1, arg2);
                             if (doubleResult == Math.floor(doubleResult))
                             {
-                                setDisplayArea("" + (int) doubleResult);   
+                                textArea.setText("" + (int) doubleResult);   
                             }
                             else
                             {
-                                setDisplayArea("" + doubleResult);
+                                textArea.setText("" + doubleResult);
                             }
                             break;
                         case "Multiplication":
                             doubleResult = Operations.multiplication(arg1, arg2);
                             if (doubleResult == Math.floor(doubleResult))
                             {
-                                setDisplayArea("" + (int) doubleResult);   
+                                textArea.setText("" + (int) doubleResult);   
                             }
                             else
                             {
-                                setDisplayArea("" + doubleResult);
+                                textArea.setText("" + doubleResult);
                             }
                             break;
                         case "Division":
                             doubleResult = Operations.division(arg1, arg2);
                             if (doubleResult == Math.floor(doubleResult))
                             {
-                                setDisplayArea("" + (int) doubleResult);   
+                                textArea.setText("" + (int) doubleResult);   
                             }
                             else
                             {
-                                setDisplayArea("" + doubleResult);
+                                textArea.setText("" + doubleResult);
                             }
                             break;
                         default:
@@ -395,7 +408,7 @@ public class GUICalculator extends JPanel
                 }
                 else 
                 {
-                    setArg2(convertTextToDouble());
+                    arg2 = Double.parseDouble(textArea.getText());
 
                     switch (desiredOperation)
                     {
@@ -403,52 +416,52 @@ public class GUICalculator extends JPanel
                             doubleResult = Operations.addition(arg1, arg2);
                             if (doubleResult == Math.floor(doubleResult))
                             {
-                                setDisplayArea("" + (int) doubleResult);
-                                isDefaultState(true);
+                                textArea.setText("" + (int) doubleResult);
+                                defaultState = true;
                             }
                             else
                             {
-                                setDisplayArea("" + doubleResult);
-                                isDefaultState(true);
+                                textArea.setText("" + doubleResult);
+                                defaultState = true;
                             }
                             break;
                         case "Subtraction":
                             doubleResult = Operations.subtraction(arg1, arg2);
                             if (doubleResult == Math.floor(doubleResult))
                             {
-                                setDisplayArea("" + (int) doubleResult);
-                                isDefaultState(true);
+                                textArea.setText("" + (int) doubleResult);
+                                defaultState = true;
                             }
                             else
                             {
-                                setDisplayArea("" + doubleResult);
-                                isDefaultState(true);
+                                textArea.setText("" + doubleResult);
+                                defaultState = true;
                             }
                             break;
                         case "Multiplication":
                             doubleResult = Operations.multiplication(arg1, arg2);
                             if (doubleResult == Math.floor(doubleResult))
                             {
-                                setDisplayArea("" + (int) doubleResult);
-                                isDefaultState(true);
+                                textArea.setText("" + (int) doubleResult);
+                                defaultState = true;
                             }
                             else
                             {
-                                setDisplayArea("" + doubleResult);
-                                isDefaultState(true);
+                                textArea.setText("" + doubleResult);
+                                defaultState = true;
                             }
                             break;
                         case "Division":
                             doubleResult = Operations.division(arg1, arg2);
                             if (doubleResult == Math.floor(doubleResult))
                             {
-                                setDisplayArea("" + (int) doubleResult);
-                                isDefaultState(true);
+                                textArea.setText("" + (int) doubleResult);
+                                defaultState = true;
                             }
                             else
                             {
-                                setDisplayArea("" + doubleResult);
-                                isDefaultState(true);
+                                textArea.setText("" + doubleResult);
+                                defaultState = true;
                             }
                             break;
                         default:
@@ -458,61 +471,5 @@ public class GUICalculator extends JPanel
            }      
         }       
     } // end of buttonListener inner class
-    
-    
-       /**
-    * Sets the text of the calculator's display area
-    * @param desiredText the appropriate text given the button clicked
-    */
-   public void setDisplayArea(String desiredText) 
-   {
-       textArea.setText(desiredText);
-   }
-   
-   /**
-    * Reads the display area and converts the string input to double for operations
-    * @return 
-    */
-   public double convertTextToDouble() 
-   {
-       return Double.parseDouble(textArea.getText());
-   }
-   
-   
-   /**
-    * Sets the first argument/operand
-    * @param argument 
-    */
-   public void setArg1(double argument) 
-   {
-       arg1 = argument;
-   }
-   
-   /**
-    * Sets the second argument/operand
-    * @param argument 
-    */
-   public void setArg2(double argument) 
-   {
-       arg2 = argument;
-   }
-   
-   /**
-    * Sets the desired operation to be carried out by the equalsButton 
-    * @param operation 
-    */
-   public void setDesiredOperation(String operation) 
-   {
-       desiredOperation = operation;
-   }
-   
-   /**
-    * Used to set zero as the default display number
-    * @param state 
-    */
-   public void isDefaultState(boolean state) 
-   {
-       defaultState = state;
-   }
     
 }
