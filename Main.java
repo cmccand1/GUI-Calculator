@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gui.calculator;
 
 import java.awt.BorderLayout;
@@ -21,9 +16,8 @@ public class Main {
     public static void main(String[] args)
     {
         JFrame frame = new JFrame("Calculator");
-        frame.getContentPane().setBackground(Color.BLACK);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setResizable(false);
+        frame.setResizable(true);
         frame.setLayout(new BorderLayout());
         frame.add(new GUICalculator(), BorderLayout.CENTER);
         frame.pack();
