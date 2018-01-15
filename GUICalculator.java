@@ -36,7 +36,7 @@ public class GUICalculator extends JPanel
     private String desiredOperation;
     private boolean defaultState;
     
-    // [0] = gridx, [1] = gridy, [2] = gridwidth, [3] = gridheight
+    // [][0] = gridx, [][1] = gridy, [][2] = gridwidth, [][3] = gridheight
     private int [][] numberButtonConstraints = new int[][] {
         {0, 5, 2, 1}, // 0
         {0, 4, 1, 1}, // 1
@@ -50,7 +50,7 @@ public class GUICalculator extends JPanel
         {2, 2, 1, 1}, // 9
     };
     
-    // [0] = gridx, [1] = gridy, [2] = gridwidth, [3] = gridheight
+    // [][0] = gridx, [][1] = gridy, [][2] = gridwidth, [][3] = gridheight
     private int[][] opButtonConstraints = new int[][] {
         {2, 5, 1, 1}, // decimal
         {3, 5, 1, 1}, // equals
