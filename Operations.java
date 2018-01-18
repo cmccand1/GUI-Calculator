@@ -1,4 +1,4 @@
-package calculator;
+package gui.calculator;
 
 
 /**
@@ -10,30 +10,30 @@ public class Operations {
     
     public static double addition(double x, double y) 
     {
-        double doubleResult = x + y;
-        return doubleResult;
+        double result = x + y;
+        return result;
     }
     
     
     public static double subtraction(double x, double y) 
     {
-        double doubleResult = x - y;
-        return doubleResult;
+        double result = x - y;
+        return result;
     }
     
     public static double multiplication(double x, double y) 
     {
-        double doubleResult = x * y;
-        return doubleResult;
+        double result = x * y;
+        return result;
     }
     
     public static double division(double x, double y) 
     {
-        double doubleResult;
+        double result;
         if (y != 0)
         {
-            doubleResult = x / y;
-            return doubleResult;
+            result = x / y;
+            return result;
         }
         else
             return -1;
@@ -42,8 +42,8 @@ public class Operations {
     
     public static double asPercent(double x) 
     {
-        double doubleResult = x / 100;
-        return doubleResult;
+        double result = x / 100;
+        return result;
         
     }
     
