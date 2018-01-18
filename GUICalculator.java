@@ -19,8 +19,8 @@ import javax.swing.JTextArea;
 public class GUICalculator extends JPanel 
 {
     
-    public static final int WIDTH = 320;
-    public static final int HEIGHT = 480;
+    private static final int WIDTH = 320;
+    private static final int HEIGHT = 480;
     
     private GridBagLayout layout;
     private Font boldFont;
@@ -76,12 +76,10 @@ public class GUICalculator extends JPanel
         setBackground(Color.BLACK);
         
         gbc = new GridBagConstraints();
-        
-        
-        
-        /**
-         * Create and format the number buttons
-         */
+
+
+
+        // Create and format the number buttons
         numberButtons = new JButton[10];
         for (int i = 0; i < numberButtons.length; i++)
         {
@@ -108,9 +106,7 @@ public class GUICalculator extends JPanel
         
         
         
-        /**
-         *  Create and format the op buttons
-         */
+        // Create and format the op buttons
         String[] opLabels = { ".", "=", "+", "-", "x", "÷", "%", "+/-", "AC" };
         opButtons = new JButton[9];
         
@@ -156,9 +152,7 @@ public class GUICalculator extends JPanel
         
         
         
-        /**
-         *  Create and format the text area
-         */
+        // Create and format the text area
         textArea = new JTextArea();
         textArea.setEditable(false);
         textArea.setBackground(Color.BLACK);
@@ -175,17 +169,16 @@ public class GUICalculator extends JPanel
         
         
         
-        /**
-         * Create an action listener and add it to each of the buttons
-         */
+        // Create an action listener and add it to each of the buttons
         ActionListener buttonClick = new ButtonListener();
-        for (int i = 0; i < numberButtons.length; i++)
+
+        for (JButton button : numberButtons)
         {
-            numberButtons[i].addActionListener(buttonClick);
+            button.addActionListener(buttonClick);
         }
-        for (int i = 0; i < opButtons.length; i++)
+        for (JButton button : opButtons)
         {
-            opButtons[i].addActionListener(buttonClick);
+            button.addActionListener(buttonClick);
         }
            
     } // end of constructor
@@ -193,7 +186,7 @@ public class GUICalculator extends JPanel
     
     
     /**
-     * Specify functionality of the buttons
+     * Specifies functionality of the buttons
      */
     class ButtonListener implements ActionListener 
    {
