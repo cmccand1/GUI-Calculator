@@ -11,17 +11,16 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-
 /**
  *
  * @author clintmccandless
  */
-public class GUICalculator extends JPanel 
+class GUICalculator extends JPanel
 {
     
     private static final int WIDTH = 320;
     private static final int HEIGHT = 480;
-    
+
     private GridBagLayout layout;
     private Font boldFont;
     
@@ -35,8 +34,8 @@ public class GUICalculator extends JPanel
     private double doubleResult;
     private String desiredOperation;
     private boolean defaultState;
-    
-    // [][0] = gridx, [][1] = gridy, [][2] = gridwidth, [][3] = gridheight
+
+    /* [][0] = gridx, [][1] = gridy, [][2] = gridwidth, [][3] = gridheight */
     private int [][] numberButtonConstraints = new int[][] {
         {0, 5, 2, 1}, // 0
         {0, 4, 1, 1}, // 1
@@ -49,8 +48,8 @@ public class GUICalculator extends JPanel
         {1, 2, 1, 1}, // 8
         {2, 2, 1, 1}, // 9
     };
-    
-    // [][0] = gridx, [][1] = gridy, [][2] = gridwidth, [][3] = gridheight
+
+    /* [][0] = gridx, [][1] = gridy, [][2] = gridwidth, [][3] = gridheight */
     private int[][] opButtonConstraints = new int[][] {
         {2, 5, 1, 1}, // decimal
         {3, 5, 1, 1}, // equals
@@ -62,12 +61,12 @@ public class GUICalculator extends JPanel
         {1, 1, 1, 1}, // plus-minus
         {0, 1, 1, 1}  // AC
     };
-    
-    
-    public GUICalculator() 
+
+    /* Calculator constructor */
+    GUICalculator()
     {
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
-       
+
         layout = new GridBagLayout();
         layout.columnWidths = new int[] {80, 80, 80, 80};
         layout.rowHeights = new int[] {80, 80, 80, 80, 80, 80};
@@ -79,12 +78,12 @@ public class GUICalculator extends JPanel
 
 
 
-        // Create and format the number buttons
+        /* Create and format the number buttons */
         numberButtons = new JButton[10];
         for (int i = 0; i < numberButtons.length; i++)
         {
             numberButtons[i] = new JButton("" + i);
-            
+
             gbc.gridx = numberButtonConstraints[i][0];
             gbc.gridy = numberButtonConstraints[i][1];
             gbc.gridwidth = numberButtonConstraints[i][2];
@@ -103,17 +102,17 @@ public class GUICalculator extends JPanel
             numberButtons[i].setBorderPainted(false);
             
         }
-        
-        
-        
-        // Create and format the op buttons
+
+
+
+        /* Create and format the op buttons */
         String[] opLabels = { ".", "=", "+", "-", "x", "÷", "%", "+/-", "AC" };
         opButtons = new JButton[9];
-        
+
         for (int i = 0; i < opButtons.length; i++)
         { 
-           opButtons[i] = new JButton("" + opLabels[i]); 
-            
+           opButtons[i] = new JButton("" + opLabels[i]);
+
            gbc.gridx = opButtonConstraints[i][0];
            gbc.gridy = opButtonConstraints[i][1];
            gbc.gridwidth = opButtonConstraints[i][2];
@@ -149,10 +148,10 @@ public class GUICalculator extends JPanel
             opButtons[i].setOpaque(true);
             opButtons[i].setBorderPainted(false);
         }
-        
-        
-        
-        // Create and format the text area
+
+
+
+        /* Create and format the text area */
         textArea = new JTextArea();
         textArea.setEditable(false);
         textArea.setBackground(Color.BLACK);
@@ -166,10 +165,10 @@ public class GUICalculator extends JPanel
         gbc.gridheight = 1;
         
         add(textArea, gbc);
-        
-        
-        
-        // Create an action listener and add it to each of the buttons
+
+
+
+        /* Create an action listener and add it to each of the buttons */
         ActionListener buttonClick = new ButtonListener();
 
         for (JButton button : numberButtons)
@@ -474,4 +473,4 @@ public class GUICalculator extends JPanel
         }       
     } // end of buttonListener inner class
     
-}
+} // end of GUI calculator class
