@@ -10,31 +10,24 @@ public class Operations {
     
     public static double addition(double x, double y) 
     {
-        double result = x + y;
-        return result;
+        return x + y;
     }
     
     
     public static double subtraction(double x, double y) 
     {
-        double result = x - y;
-        return result;
+        return x - y;
     }
     
     public static double multiplication(double x, double y) 
     {
-        double result = x * y;
-        return result;
+        return x * y;
     }
     
     public static double division(double x, double y) 
     {
-        double result;
         if (y != 0)
-        {
-            result = x / y;
-            return result;
-        }
+            return x / y;
         else
             return -1;
          
@@ -42,8 +35,7 @@ public class Operations {
     
     public static double asPercent(double x) 
     {
-        double result = x / 100;
-        return result;
+        return x / 100;
         
     }
     
