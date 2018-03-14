@@ -246,7 +246,6 @@ class GUICalculator extends JPanel {
                 arg1 = 0;
             } else if (e.getSource() == opButtons[7]) {
                 arg1 = Double.parseDouble(textArea.getText());
-
                 result = Operations.flipSigns(arg1);
                 if (result == Math.floor(result)) {
                     textArea.setText("" + (int) result);
@@ -255,27 +254,22 @@ class GUICalculator extends JPanel {
                 }
             } else if (e.getSource() == opButtons[6]) {
                 arg1 = Double.parseDouble(textArea.getText());
-
                 result = Operations.asPercent(arg1);
                 textArea.setText("" + result);
             } else if (e.getSource() == opButtons[5]) {
                 arg1 = Double.parseDouble(textArea.getText());
-
                 defaultState = true;
                 desiredOperation = "Division";
             } else if (e.getSource() == opButtons[4]) {
                 arg1 = Double.parseDouble(textArea.getText());
-
                 defaultState = true;
                 desiredOperation = "Multiplication";
             } else if (e.getSource() == opButtons[2]) {
                 arg1 = Double.parseDouble(textArea.getText());
-
                 defaultState = true;
                 desiredOperation = "Addition";
             } else if (e.getSource() == opButtons[3]) {
                 arg1 = Double.parseDouble(textArea.getText());
-
                 defaultState = true;
                 desiredOperation = "Subtraction";
             } else if (e.getSource() == opButtons[0]) // decimal button
@@ -284,7 +278,6 @@ class GUICalculator extends JPanel {
             } else if (e.getSource() == opButtons[1]) {
                 if (defaultState) {
                     arg1 = result;
-
                     switch (desiredOperation) {
                         case "Addition":
                             result = Operations.addition(arg1, arg2);
@@ -323,7 +316,6 @@ class GUICalculator extends JPanel {
                     }
                 } else {
                     arg2 = Double.parseDouble(textArea.getText());
-
                     switch (desiredOperation) {
                         case "Addition":
                             result = Operations.addition(arg1, arg2);
