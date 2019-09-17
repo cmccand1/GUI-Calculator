@@ -246,7 +246,7 @@ class GUICalculator extends JPanel {
                 arg1 = 0;
             } else if (e.getSource() == opButtons[7]) {
                 arg1 = Double.parseDouble(textArea.getText());
-                result = Operations.flipSigns(arg1);
+                result = arg1 * -1; // this operation flips the signs of the argument
                 if (result == Math.floor(result)) {
                     textArea.setText("" + (int) result);
                 } else {
@@ -254,7 +254,7 @@ class GUICalculator extends JPanel {
                 }
             } else if (e.getSource() == opButtons[6]) {
                 arg1 = Double.parseDouble(textArea.getText());
-                result = Operations.asPercent(arg1);
+                result = arg1 / 100; // this operation returns the argument passed as a percent
                 textArea.setText("" + result);
             } else if (e.getSource() == opButtons[5]) {
                 arg1 = Double.parseDouble(textArea.getText());
@@ -280,7 +280,7 @@ class GUICalculator extends JPanel {
                     arg1 = result;
                     switch (desiredOperation) {
                         case "Addition":
-                            result = Operations.addition(arg1, arg2);
+                            result = arg1 + arg2;
                             if (result == Math.floor(result)) {
                                 textArea.setText("" + (int) result);
                             } else {
@@ -288,7 +288,7 @@ class GUICalculator extends JPanel {
                             }
                             break;
                         case "Subtraction":
-                            result = Operations.subtraction(arg1, arg2);
+                            result = arg1 - arg2;
                             if (result == Math.floor(result)) {
                                 textArea.setText("" + (int) result);
                             } else {
@@ -296,7 +296,7 @@ class GUICalculator extends JPanel {
                             }
                             break;
                         case "Multiplication":
-                            result = Operations.multiplication(arg1, arg2);
+                            result = arg1 * arg2;
                             if (result == Math.floor(result)) {
                                 textArea.setText("" + (int) result);
                             } else {
@@ -304,7 +304,7 @@ class GUICalculator extends JPanel {
                             }
                             break;
                         case "Division":
-                            result = Operations.division(arg1, arg2);
+                            result = (arg2 > 0) ? (arg1 / arg2) : -1;
                             if (result == Math.floor(result)) {
                                 textArea.setText("" + (int) result);
                             } else {
@@ -318,7 +318,7 @@ class GUICalculator extends JPanel {
                     arg2 = Double.parseDouble(textArea.getText());
                     switch (desiredOperation) {
                         case "Addition":
-                            result = Operations.addition(arg1, arg2);
+                            result = arg1 + arg2;
                             if (result == Math.floor(result)) {
                                 textArea.setText("" + (int) result);
                                 defaultState = true;
@@ -328,7 +328,7 @@ class GUICalculator extends JPanel {
                             }
                             break;
                         case "Subtraction":
-                            result = Operations.subtraction(arg1, arg2);
+                            result = arg1 - arg2;
                             if (result == Math.floor(result)) {
                                 textArea.setText("" + (int) result);
                                 defaultState = true;
@@ -338,7 +338,7 @@ class GUICalculator extends JPanel {
                             }
                             break;
                         case "Multiplication":
-                            result = Operations.multiplication(arg1, arg2);
+                            result = arg1 * arg2;
                             if (result == Math.floor(result)) {
                                 textArea.setText("" + (int) result);
                                 defaultState = true;
@@ -348,7 +348,7 @@ class GUICalculator extends JPanel {
                             }
                             break;
                         case "Division":
-                            result = Operations.division(arg1, arg2);
+                            result = (arg2 > 0) ? (arg1 / arg2) : -1;
                             if (result == Math.floor(result)) {
                                 textArea.setText("" + (int) result);
                                 defaultState = true;
